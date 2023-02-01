@@ -1,26 +1,35 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import {
+  Route,
+  RouterProvider,
+  createRoutesFromElements,
+  createBrowserRouter,
+} from "react-router-dom";
+
+//Layout
+import HelpLayout from "./layouts/HelpLayout";
+import RootLayout from "./layouts/RootLayout";
 
 //Pages
-import Navbar from "./menu/Navbar";
-import About from "./pages/About";
 import Home from "./pages/Home";
+import Contact from "./pages/help/Contact";
+import Faq from "./pages/help/Faq";
+import About from "./pages/About";
 
 function App() {
-  return (
-    <BrowserRouter>
-      {/* I'll wrap the entire application with BrowserRouter componente, inside this component I'll list each compente shoud be rendered for each route */}
-      <header>
-        <Navbar />
-      </header>
-      <main>
-        <Routes>
-          {/* This a kind of parente componente for multiples different routers component */}
-          <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
-        </Routes>
-      </main>
-    </BrowserRouter>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<RootLayout />}>
+        {/* This a kind of parente componente for multiples different routers component */}
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="help" element={<HelpLayout />}>
+          <Route path="faq" element={<Faq />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+      </Route>
+    )
   );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
