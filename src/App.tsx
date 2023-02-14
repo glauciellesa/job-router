@@ -17,6 +17,8 @@ import Faq from "./pages/help/Faq";
 import About from "./pages/About";
 import PageNotFound from "./pages/PageNotFound";
 import Careers, { careersLoader } from "./pages/careers/Careers";
+import CareerDetail, { careerDetailLoader } from "./pages/careers/CareerDetail";
+import CareersError from "./pages/careers/CareersError";
 
 function App() {
   const router = createBrowserRouter(
@@ -30,8 +32,18 @@ function App() {
             <Route path="faq" element={<Faq />} />
             <Route path="contact" element={<Contact />} />
           </Route>
-          <Route path="careers" element={<CareersLayout />}>
+          <Route
+            path="careers"
+            element={<CareersLayout />}
+            errorElement={<CareersError />}
+            //errorElement={<CareersError />} // if a error is throw inside the rout career so take this error and show the component error with the error message injected
+          >
             <Route index element={<Careers />} loader={careersLoader} />
+            <Route
+              path=":id"
+              element={<CareerDetail />}
+              loader={careerDetailLoader}
+            />
           </Route>
 
           <Route path="*" element={<PageNotFound />} />
