@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import Breadcrumbs from "../components/Breadcrumbs";
 import Navbar from "../menu/Navbar";
 
 const RootLayout = () => {
@@ -6,6 +7,7 @@ const RootLayout = () => {
     <div className="root-layout">
       <header>
         <Navbar />
+        <Breadcrumbs />
       </header>
       <main>
         {/* <Outlet/> this component is responsable to say to react router where we want, 
