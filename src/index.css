@@ -154,5 +154,5 @@ form label span {
   color: #ddd;
 }
 .breadcrumbs .crumb a {
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
