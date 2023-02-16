@@ -12,7 +12,7 @@ import CareersLayout from "./layouts/CareersLayout";
 
 //Pages
 import Home from "./pages/Home";
-import Contact from "./pages/help/Contact";
+import Contact, { contactAction } from "./pages/help/Contact";
 import Faq from "./pages/help/Faq";
 import About from "./pages/About";
 import PageNotFound from "./pages/PageNotFound";
@@ -30,7 +30,11 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="help" element={<HelpLayout />}>
             <Route path="faq" element={<Faq />} />
-            <Route path="contact" element={<Contact />} />
+            <Route
+              path="contact"
+              element={<Contact />}
+              action={contactAction}
+            />
           </Route>
           <Route
             path="careers"
